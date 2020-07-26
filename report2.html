@@ -19,13 +19,12 @@ async function init() {
     var ylogScale = d3.scaleLog().base(10).domain([10, 150]).range([200,0]);
     d3.select("svg").append("g")
                       .attr("transform","translate("+margin+","+margin+")")
-                     .selectAll("circle")
+                     .selectAll("line")
                      .data(data)
                      .enter()
-                     .append("circle")
+                     .append("line")
                      .attr('cx', function(d,i){ return xlogScale(i);} )
-                     .attr('cy', function(d,i){ return ylogScale(i);} )
-                     .attr("r",function(d,i)  {return  2;});
+                     .attr('cy', function(d,i){ return ylogScale(i);} );
 
 d3.select("svg").append("g")
       .attr("transform", "translate("+margin+","+margin+")")
