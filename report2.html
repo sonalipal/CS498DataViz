@@ -8,22 +8,22 @@
 <p>This text is normal.</p>
 
 <p><strong>This text is important!</strong></p>
-<svg width=300 height=300>
+<svg width=3000 height=3000>
 </svg>
 <script>
 async function init() {
 
   const data = await d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv");
     margin = 50;
-    var xlogScale = d3.scaleLog().base(10).domain([10, 150]).range([0,200]);
-    var ylogScale = d3.scaleLog().base(10).domain([10, 150]).range([200,0]);
+    var xlogScale = d3.scaleLog().base(10).domain([10, 150]).range([0,2000]);
+    var ylogScale = d3.scaleLog().base(10).domain([10, 150]).range([2000,0]);
     d3.select("svg").append("g")
                       .attr("transform","translate("+margin+","+margin+")")
                      .selectAll("circle")
                      .data(data)
                      .enter()
                      .append("circle")
-                     .attr('cx', function(d,i){ return xlogScale(d.release_year);} )
+                     .attr('cx', function(d,i){ return xlogScale(i);} )
                      .attr('cy', function(d,i){ return ylogScale(i);} )
                      .attr("r",function(d,i)  {return  2;});
 
