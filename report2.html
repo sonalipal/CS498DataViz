@@ -15,25 +15,25 @@ async function init() {
 
   const data = await d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv");
     margin = 50;
-    var x = d3.scaleTime().domain([10, 150]).range([0,200]);
-    var y = d3.scaleTime().domain([10, 150]).range([200,0]);
+    var xlogScale = d3.scaleLog().base(10).domain([10, 150]).range([0,200]);
+    var ylogScale = d3.scaleLog().base(10).domain([10, 150]).range([200,0]);
     d3.select("svg").append("g")
                       .attr("transform","translate("+margin+","+margin+")")
-                     .selectAll("line")
+                     .selectAll("circle")
                      .data(data)
                      .enter()
-                     .append("line")
-                     .attr('x', function(d,i){ return x(d.release_year);} )
-                     .attr('y', function(d,i){ return y(count(d.title));} )
-                     ;
+                     .append("circle")
+                     .attr('cx', function(d,i){ return xlogScale(d.release_year);} )
+                     .attr('cy', function(d,i){ return ylogScale(i);} )
+                     .attr("r",function(d,i)  {return  2;});
 
 d3.select("svg").append("g")
       .attr("transform", "translate("+margin+","+margin+")")
-      .call(d3.axisLeft(y)); 
+      .call(d3.axisLeft(ylogScale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));  
 
 d3.select("svg").append("g")
       .attr("transform", "translate("+margin+","+(200+margin)+")")
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(xlogScale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
 
       }
 </script>
