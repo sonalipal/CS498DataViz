@@ -6,7 +6,7 @@
 async function init(){
 const data = await d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv");
   
-  d3.select('body').selectAll('p').data('data').enter().append('p').html(function(d,i) { return d.release_year + '  '+ d.title ;});
+  d3.select('body').selectAll('p').data('data').enter().append('p').html(function(d,i) { return d ;});
 
 }
 </script>
