@@ -1,25 +1,11 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-
-
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <body onload='init()'>
-<p>This text is normal.</p>
-
-<p><strong>This text is important!</strong></p>
-<svg width=300 height=300>
-</svg>
 <script>
-async function init() {
-
-  const data = await d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv");
+const data = await d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv");
   
-  d3.select('body').selectALL('p').data('data').enter().append('p').html(function(d,i) { return d.release_year + '  '+ d.title ;});
-
-
-
-}
+d3.select('body').selectALL('p').data('data').enter().append('p').html(function(d,i) { return d.release_year + '  '+ d.title ;});
 </script>
 </body>
 </html>
