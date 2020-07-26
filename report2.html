@@ -28,15 +28,15 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : d3.timeParse("%Y-%m-%d")(d.date_added), value : d.release_year }
+    return { date : d.release_year, value : d.release_year }
   },
 
   // Now I can use this dataset:
   function(data) {
 
-    // Add X axis --> it is a date format
+    // Add x axis
     var x = d3.scaleTime()
-      .domain(d3.extent(data, function(d) { return d.date_added; }))
+      .domain(d3.extent(data, function(d) { return d.date; }))
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
