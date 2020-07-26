@@ -4,69 +4,38 @@
 
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<body>
+<body onload='init()'>
 <p>This text is normal.</p>
 
 <p><strong>This text is important!</strong></p>
-
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
-
+<svg width=300 height=300>
+</svg>
 <script>
+async function init() {
 
-// set the dimensions and margins of the grapha
-var margin = {top: 1000, right: 300, bottom: 300, left: 600},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+  const data = await d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv");
+    margin = 50;
+    var x = d3.scaleTime().domain([10, 150]).range([0,200]);
+    var y = d3.scaleTime().domain([10, 150]).range([200,0]);
+    d3.select("svg").append("g")
+                      .attr("transform","translate("+margin+","+margin+")")
+                     .selectAll("line")
+                     .data(data)
+                     .enter()
+                     .append("line")
+                     .attr('x', function(d,i){ return x(d.release_year);} )
+                     .attr('y', function(d,i){ return y(count(d.title));} )
+                     ;
 
-// append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+d3.select("svg").append("g")
+      .attr("transform", "translate("+margin+","+margin+")")
+      .call(d3.axisLeft(y)); 
 
-//Read the data
-d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv",
-
-  // When reading the csv, I must format variables:
-  function(d){
-    return { date : d.release_year, value : d.release_year }
-  },
-
-  // Now I can use this dataset:
-  function(data) {
-
-    // Add x axis
-    var x = d3.scaleTime()
-      .domain(d3.extent(data, function(d) { return d.date; }))
-      .range([ 0, width ]);
-    svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
+d3.select("svg").append("g")
+      .attr("transform", "translate("+margin+","+(200+margin)+")")
       .call(d3.axisBottom(x));
 
-    // Add Y axis
-    var y = d3.scaleLinear()
-      .domain([0, d3.max(data, function(d) { return +d.value; })])
-      .range([ height, 0 ]);
-    svg.append("g")
-      .call(d3.axisLeft(y));
-
-    // Add the line
-    svg.append("path")
-      .datum(data)
-      .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 1.5)
-      .attr("d", d3.line()
-        .x(function(d) { return x(d.date_added) })
-        .y(function(d) { return y(d.release_year) })
-        )
-
-})
-
+      }
 </script>
 </body>
 </html>
