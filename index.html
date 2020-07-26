@@ -1,1 +1,14 @@
-hello World
+<!DOCTYPE html>
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<body onload='init()'>
+<script>
+async function init(){
+const data = await d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_new_title_per_yr.csv");
+  
+  d3.select('body').selectAll('p').data(data).enter().append('p').html(function(d,i) { return d.year_added + ' '  + d.count;});
+
+}
+</script>
+</body>
+</html>
