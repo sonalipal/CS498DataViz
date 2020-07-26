@@ -23,8 +23,8 @@ async function init() {
                      .data(data)
                      .enter()
                      .append("line")
-                     .attr('cx', function(d,i){ return xlogScale(i);} )
-                     .attr('cy', function(d,i){ return ylogScale(i);} );
+                     .attr('x', function(d,i){ return xlogScale(i);} )
+                     .attr('y', function(d,i){ return ylogScale(i);} );
 
 d3.select("svg").append("g")
       .attr("transform", "translate("+margin+","+margin+")")
