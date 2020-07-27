@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<body onload='init()'>
-<script>
-async function init(){
-const data = await d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_new_title_per_yr.csv");
-  
-  d3.select('body').selectAll('p').data(data).enter().append('p').html(function(d,i) { return d.year_added + ' '  + d.count;});
+<style> path {stroke: black;}</style>
+<body>
+<svg width=300 height=300>
+</svg>
 
-}
+<script>
+var data = [4265,1960];
+var color = ['orange','blue'];
+var pie = d3.pie();
+var arc = d3.arc().innerRadius(0).outerRadius(100);
+
+margin = 150;
+
+d3.select("svg").append("g")
+                  .attr("transform","translate("+margin+","+margin+")")
+    .selectAll("path")
+    .data(pie(data))
+    .enter()
+    .append("path")
+        .attr("d",arc)
+        .attr("fill",function(d,i) { return color[i]; });
+
+
+
 </script>
 </body>
 </html>
+
