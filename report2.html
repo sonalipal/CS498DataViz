@@ -27,6 +27,30 @@ d3.select("svg").append("g")
 
 </script>
   <p> this is new line </p>
+  
+ <svg width=500 height=500>
+</svg>
+
+<script>
+var data = [4265,1960];
+var color = ['orange','blue'];
+var pie = d3.pie();
+var arc = d3.arc().innerRadius(0).outerRadius(100);
+
+margin = 200;
+
+d3.select("svg").append("g")
+                  .attr("transform","translate("+margin+","+margin+")")
+    .selectAll("path")
+    .data(pie(data))
+    .enter()
+    .append("path")
+        .attr("d",arc)
+        .attr("fill",function(d,i) { return color[i]; });
+
+
+
+</script>
 </body>
 </html>
 
