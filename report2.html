@@ -3,7 +3,7 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> path {stroke: black;}</style>
 <body>
-<svg width=3000 height=3000>
+<svg width=500 height=500>
 </svg>
 
 <script>
@@ -12,7 +12,7 @@ var color = ['orange','blue'];
 var pie = d3.pie();
 var arc = d3.arc().innerRadius(0).outerRadius(100);
 
-margin = 1500;
+margin = 200;
 
 d3.select("svg").append("g")
                   .attr("transform","translate("+margin+","+margin+")")
