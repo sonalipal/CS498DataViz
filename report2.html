@@ -32,7 +32,7 @@ d3.select("svg").append("g")
 </svg>
 
 <script>
-var data = [4265,1960];
+var data1 = [4265,1960];
 var color = ['orange','blue'];
 var pie = d3.pie();
 var arc = d3.arc().innerRadius(0).outerRadius(100);
@@ -42,7 +42,7 @@ margin = 200;
 d3.select("svg").append("g")
                   .attr("transform","translate("+margin+","+margin+")")
     .selectAll("path")
-    .data(pie(data))
+    .data(pie(data1))
     .enter()
     .append("path")
         .attr("d",arc)
