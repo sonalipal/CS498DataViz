@@ -30,7 +30,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
     
     title_count = d3.nest()
   .key(function(d) { return d.listed_in; })
-  .rollup(function(v) { return (v.values; ); })
+  .rollup(function(v) { return (v.values); })
   .entries(data);
     
     
