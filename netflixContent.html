@@ -64,13 +64,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.show_count); })
       .attr("fill", "steelblue")//#69b3a2
-      .append("text")
-      .text(function(d) {
-            //  if (d.data.value > 748|| d.data.Call_Type == "Other" || d.data.Call_Type == "Fire")
-             {
-               return d.data.category;
-             }
-             return "";});
+     ;
     
     
 })
