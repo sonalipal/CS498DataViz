@@ -11,7 +11,7 @@
 
 
 // set the dimensions and margins of the graph
-var margin = {top: 50, right: 50, bottom: 180, left: 50},
+var margin = {top: 50, right: 50, bottom: 180, left: 100},
     width = 460 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -63,7 +63,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
       .attr("y", function(d) { return y(d.show_count); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.show_count); })
-      .attr("fill", "#69b3a2")
+      .attr("fill", "steelblue")//#69b3a2
     
     
 })
