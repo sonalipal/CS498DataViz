@@ -25,7 +25,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_rev_trend.csv", function(data) {
  margin = 50;
     var xlogScale = d3.scaleLog().base(10).domain([10, 150]).range([0,200]);
     var ylogScale = d3.scaleLog().base(10).domain([10, 150]).range([200,0]);
@@ -35,8 +35,8 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
                      .data(data)
                      .enter()
                      .append("circle")
-                     .attr('cx', function(d,i){ return xlogScale(d.AverageCityMPG);} )
-                     .attr('cy', function(d,i){ return ylogScale(d.AverageHighwayMPG);} )
+                     .attr('cx', function(d,i){ return xlogScale(d.year);} )
+                     .attr('cy', function(d,i){ return ylogScale(d.revenue);} )
                      .attr("r",function(d,i)  {return +d.EngineCylinders + 2;});
 
 d3.select("svg").append("g")
@@ -45,7 +45,7 @@ d3.select("svg").append("g")
 
 d3.select("svg").append("g")
       .attr("transform", "translate("+margin+","+(200+margin)+")")
-      .call(d3.axisBottom(xlogScale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
+      .call(d3.axisBottom(xlogScale).tickValues([2005,2006,2007,2008]).tickFormat(d3.format("~s")));
   
 })
 
