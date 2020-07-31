@@ -1,0 +1,16 @@
+country,show_count
+United States,2604
+India,839
+United Kingdom,602
+Canada,319
+France,272
+Japan,231
+Spain,178
+South Korea,163
+Germany ,157
+Mexico,130
+Australia,126
+China ,121
+Turkey,88
+Taiwan,75
+
