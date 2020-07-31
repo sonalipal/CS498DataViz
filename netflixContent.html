@@ -45,15 +45,22 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
     .call(d3.axisBottom(x)) //
     .selectAll("text")
       .attr("transform", "translate(-10,0)rotate(-45)")
-      .style("text-anchor", "end")
-       .text("No. of Shows");;
+      .style("text-anchor", "end");
 
   // Add Y axis
   var y = d3.scaleLinear()
     .domain([0, 2300])
     .range([ height, 0]);
   svg.append("g")
-    .call(d3.axisLeft(y)); 
+    .call(d3.axisLeft(y))
+    .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .attr("fill", "#5D6971")
+        .text("Average House Price - (£)");
+; 
 
      // Bars
   svg.selectAll("mybar")
