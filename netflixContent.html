@@ -42,7 +42,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
     .padding(0.2);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisLeft(x)) //d3.axisBottom(x)
+    .call(d3.axisBottom(x)) //
     .selectAll("text")
       .attr("transform", "translate(-10,0)rotate(-45)")
       .style("text-anchor", "end");
@@ -52,7 +52,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
     .domain([0, 300])
     .range([ height, 0]);
   svg.append("g")
-    .call(d3.axisBottom(y)); //d3.axisLeft(y)
+    .call(d3.axisLeft(y)); 
 
      // Bars
   svg.selectAll("mybar")
