@@ -36,6 +36,11 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
     
  console.log(title_count);
     
+    // sort data
+  data.sort(function(b, a) {
+    return a.show_id - b.show_id;
+  });
+    
        // Add X axis --> it is a date format
     var x = d3.scaleTime()
       .domain(d3.extent(data, function(d) { return d.date_added_year; }))
@@ -51,6 +56,16 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
     svg.append("g")
       .call(d3.axisLeft(y));
 
+     // Bars
+  svg.selectAll("mybar")
+    .data(data)
+    .enter()
+    .append("rect")
+      .attr("x", function(d) { return x(d.Country); })
+      .attr("y", function(d) { return y(d.Value); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.show_id); })
+      .attr("fill", "#69b3a2")
     
     
 })
