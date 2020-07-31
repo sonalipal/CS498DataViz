@@ -1,14 +1,63 @@
 <!DOCTYPE html>
-<html>
-<script src='https://d3js.org/d3.v5.min.js'></script>
-<body onload='init()'>
-<script>
-async function init(){
-const data = await d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_new_title_per_yr.csv");
-  
-  d3.select('body').selectAll('p').data(data).enter().append('p').html(function(d,i) { return d.year_added + ' '  + d.count;});
 
+<head><meta charset="utf-8">
+
+<title>Data Viz</title>
+<style>
+h1 {
+  font-family: sans-serif;
+  text-align: center;
 }
+
+svg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+}
+
+svg text {
+  font-size: 11px;
+  font-family: sans-serif;
+  text-anchor: middle;
+  fill: black;
+}
+
+</style>
+<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+</head>
+
+
+<body>
+<h1>Netflix Content Analysis</h1>
+
+
+<html>
+<style> path {stroke: black;}</style>
+<svg width=300 height=300>
+</svg>
+
+<script>
+var data = [4265,1960,1000];
+var color = ['orange','blue','green'];
+var pie = d3.pie();
+var arc = d3.arc().innerRadius(0).outerRadius(100);
+
+margin = 150;
+
+d3.select("svg").append("g")
+                  .attr("transform","translate("+margin+","+margin+")")
+    .selectAll("path")
+    .data(pie(data))
+    .enter()
+    .append("path")
+        .attr("d",arc)
+        .attr("fill",function(d,i) { return color[i]; });
+
+
+
 </script>
+<p> this is new line </p>
 </body>
 </html>
+
