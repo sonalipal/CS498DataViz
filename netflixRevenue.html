@@ -25,9 +25,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_rev_trend.csv", function(d){
-    return { year : d3.timeParse("%Y")(d.year), revenue : d.revenue }
-  },
+d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_rev_trend.csv", 
        function(data) {
  console.log(data);
     
