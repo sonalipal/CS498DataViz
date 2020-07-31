@@ -29,13 +29,13 @@ var y = d3.scaleLinear().range([height, 0]);
 
 // define the 1st line
 var valueline = d3.line()
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.close); });
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.revenue); });
 
 // define the 2nd line
 var valueline2 = d3.line()
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.open); });
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.paid_membership); });
 
 // append the svg obgect to the body of the page
 // appends a 'group' element to 'svg'
