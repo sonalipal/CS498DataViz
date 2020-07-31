@@ -27,7 +27,16 @@ var svg = d3.select("#my_dataviz")
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv", 
        function(data) {
- console.log(data[date_added_year]);
+    
+    title_count = d3.nest()
+  .key(function(d) { return d.listed_in; })
+  .rollup(function(v) { return {
+    count: v.title
+  }; })
+  .entries(data);
+    
+    
+ console.log(title_count);
     
        // Add X axis --> it is a date format
     var x = d3.scaleTime()
@@ -39,7 +48,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([0, d3.count(data, function(d) { return d.title; })])
+      .domain([0, d3.max(data, function(d) { return d.title; })])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
