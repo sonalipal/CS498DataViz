@@ -12,7 +12,7 @@
 
 // set the dimensions and margins of the graph
 var margin = {top: 50, right: 30, bottom: 80, left: 200},
-    width = 660 - margin.left - margin.right,
+    width =  500 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -45,7 +45,8 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
     .call(d3.axisBottom(x)) //
     .selectAll("text")
       .attr("transform", "translate(-10,0)rotate(-45)")
-      .style("text-anchor", "end");
+      .style("text-anchor", "end")
+       .text("No. of Shows");;
 
   // Add Y axis
   var y = d3.scaleLinear()
