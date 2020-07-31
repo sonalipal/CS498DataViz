@@ -31,13 +31,14 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
     var ylogScale = d3.scaleLog().base(10).domain([10, 150]).range([200,0]);
     d3.select("svg").append("g")
                       .attr("transform","translate("+margin+","+margin+")")
-                     .selectAll("circle")
+                     .selectAll("rect")
                      .data(data)
                      .enter()
-                     .append("circle")
-                     .attr('cx', function(d,i){ return d.year;} )
-                     .attr('cy', function(d,i){ return d.revenue;} )
-                     .attr("r",function(d,i)  {return 2;});
+                     .append("rect")
+                     .attr('x', function(d,i){ return d.year;} )
+                     .attr('y', function(d,i){ return d.revenue;} )
+                     .attr("height",function(d,i)  {return d.revenue ;})
+                     .attr("width",function(d,i)  {return i ;}) ;
 
 d3.select("svg").append("g")
       .attr("transform", "translate("+margin+","+margin+")")
