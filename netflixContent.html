@@ -25,22 +25,20 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv", 
+d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category.csv", 
        function(data) {
+    // sort data
+  data.sort(function(b, a) {
+    return a.show_count - b.show_count;
+  });
     
-    title_count = d3.nest()
-  .key(function(d) { return d.listed_in; })
-  .rollup(function(v) { return (v.values); })
-  .entries(data);
-    
-    
- console.log(title_count);
+ console.log(data);
     
    
        // X axis
   var x = d3.scaleBand()
     .range([ 0, width ])
-    .domain(data.map(function(d) { return d.date_added_year; }))
+    .domain(data.map(function(d) { return d.category; }))
     .padding(0.2);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -61,10 +59,10 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
     .data(data)
     .enter()
     .append("rect")
-      .attr("x", function(d) { return x(d.date_added_year); })
-      .attr("y", function(d) { return y(d.show_id); })
+      .attr("x", function(d) { return x(d.category); })
+      .attr("y", function(d) { return y(d.show_count; })
       .attr("width", 2)
-      .attr("height", function(d) { return height - y(d.show_id); })
+      .attr("height", function(d) { return height - y(d.show_count); })
       .attr("fill", "#69b3a2")
     
     
