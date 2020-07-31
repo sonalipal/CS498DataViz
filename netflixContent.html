@@ -27,7 +27,7 @@ var svg = d3.select("#my_dataviz")
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_titles.csv", 
        function(data) {
- console.log(data);
+ console.log(data[date_added_year]);
     
        // Add X axis --> it is a date format
     var x = d3.scaleTime()
