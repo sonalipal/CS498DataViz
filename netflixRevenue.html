@@ -26,7 +26,7 @@ var svg = d3.select("#my_dataviz")
 
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_rev_trend.csv", function(d){
-    return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+    return { year : d3.timeParse("%Y-%m-%d")(d.year), revenue : d.revenue }
   },
        function(data) {
  console.log(data);
