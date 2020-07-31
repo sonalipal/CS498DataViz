@@ -35,9 +35,9 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
                      .data(data)
                      .enter()
                      .append("circle")
-                     .attr('cx', function(d,i){ return xlogScale(d.year);} )
-                     .attr('cy', function(d,i){ return ylogScale(d.revenue);} )
-                     .attr("r",function(d,i)  {return +d.EngineCylinders + 2;});
+                     .attr('cx', function(d,i){ return d.year;} )
+                     .attr('cy', function(d,i){ return d.revenue;} )
+                     .attr("r",function(d,i)  {return 2;});
 
 d3.select("svg").append("g")
       .attr("transform", "translate("+margin+","+margin+")")
