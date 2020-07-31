@@ -60,7 +60,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
     .enter()
     .append("rect")
       .attr("x", function(d) { return x(d.category); })
-      .attr("y", function(d) { return y(d.show_count; })
+      .attr("y", function(d) { return y(d.show_count); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.show_count); })
       .attr("fill", "#69b3a2")
