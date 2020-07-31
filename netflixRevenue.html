@@ -26,28 +26,8 @@ var svg = d3.select("#my_dataviz")
 
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_rev_trend.csv", function(data) {
- margin = 50;
-    var xlogScale = d3.scaleLog().base(10).domain([10, 150]).range([0,200]);
-    var ylogScale = d3.scaleLog().base(10).domain([10, 150]).range([200,0]);
-    d3.select("svg").append("g")
-                      .attr("transform","translate("+margin+","+margin+")")
-                     .selectAll("rect")
-                     .data(data)
-                     .enter()
-                     .append("rect")
-                     .attr('x', function(d,i){ return d.year;} )
-                     .attr('y', function(d,i){ return d.revenue;} )
-                     .attr("height",function(d,i)  {return d.revenue ;})
-                     .attr("width",function(d,i)  {return i ;}) ;
-
-d3.select("svg").append("g")
-      .attr("transform", "translate("+margin+","+margin+")")
-      .call(d3.axisLeft(ylogScale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));  
-
-d3.select("svg").append("g")
-      .attr("transform", "translate("+margin+","+(200+margin)+")")
-      .call(d3.axisBottom(xlogScale).tickValues([2005,2006,2007,2008]).tickFormat(d3.format("~s")));
-  
+ console.log(d.year);
+    
 })
 
 </script>
