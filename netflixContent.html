@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 
 <!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3.v5.js"></script>
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
@@ -67,7 +67,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
     .append("rect")
       .attr("x", function(d) { return x(d.date_added_year); })
       .attr("y", function(d) { return y(d.show_id); })
-      .attr("width", x.bandwidth())
+      .attr("width", 2)
       .attr("height", function(d) { return height - y(d.show_id); })
       .attr("fill", "#69b3a2")
     
