@@ -5,8 +5,8 @@
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Add 2 buttons -->
-<button onclick="update(data1)">Variable 1</button>
-<button onclick="update(data2)">Variable 2</button>
+<button onclick="update1()">Variable 1</button>
+<button onclick="update2()">Variable 2</button>
 
 
 <script>
@@ -26,13 +26,19 @@ var data2 = [
 ];
 
 // A function that create / update the plot for a given variable:
-function update(data) {
+function update1() {
+   d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/barplot_change_data.csv", function(data) {
+           
  console.log(data);
-  
+   }}
 
-}
+function update2() {
+   d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/barplot_change_data.csv", function(data) {
+           
+ console.log(data);
+   }}
 
 // Initialize the plot with the first dataset
-update(data1)
+update1()
 
 </script>
