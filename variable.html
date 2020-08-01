@@ -67,7 +67,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_coun
 
     // Add Y axis
     var y = d3.scaleLinear()
-       .domain([0, d3.max(data, function(d) { return +d.Movies; })])       //.domain( [0,20])
+       .domain([0, d3.max(data, function(d) { return +d.Total; })])       //.domain( [0,20])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
@@ -90,14 +90,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_coun
 
       // Create new data with the selection?
       var dataFilter = data.map(function(d){return {time: d.Year, value:d[selectedGroup]} })
-      
-      // chane Y axis for selected data 
-    var y = d3.scaleLinear()
-       .domain([0, d3.max(data, function(d) { return +d[selectedGroup]; })])       //.domain( [0,20])
-      .range([ height, 0 ]);
-       
-      svg.append("g")
-      .call(d3.axisLeft(y));
+    
 
       // Give these new data to update line
       line
