@@ -16,8 +16,8 @@
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 100, bottom: 30, left: 30},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 660 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -32,7 +32,7 @@ var svg = d3.select("#my_dataviz")
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_country_trend.csv", function(data) {
 
     // List of groups (here I have one group per column)
-    var allGroup = ["Movies", "Shows","Total"]
+    var allGroup = ["Total","Movies", "Shows",]
 
     // add the options to the button
     d3.select("#selectButton")
@@ -46,7 +46,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_coun
     // A color scale: one color for each group
     var myColor = d3.scaleOrdinal()
       .domain(allGroup)
-      .range(d3.schemeSet2);
+      .range(d3.schemeSet20);
 
     // Add X axis --> it is a date format
     //var x = d3.scaleLinear()
@@ -79,9 +79,9 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_coun
         .datum(data)
         .attr("d", d3.line()
           .x(function(d) { return x(+d.Year) })
-          .y(function(d) { return y(+d.Movies) })
+          .y(function(d) { return y(+d.Total) })
         )
-        .attr("stroke", function(d){ return myColor("Movies") })
+        .attr("stroke", function(d){ return myColor("Total") })
         .style("stroke-width", 4)
         .style("fill", "none")
 
