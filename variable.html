@@ -1,39 +1,26 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-
-
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> path {stroke: black;}</style>
+<body>
+<svg width=300 height=300>
+</svg>
 
 <script>
-  
-    console.log("I am in update1");
-      var width = 200;
-      var height = 200;
-      var margin = 50;
-      var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,width]);
-      var y = d3.scaleLinear().domain([0,42]).range([height,0]);
-      data = [10,20,30,40,50]
+var data = [4265,1960];
+var color = ['orange','movies'];
+var pie = d3.pie();
+var arc = d3.arc().innerRadius(0).outerRadius(100);
 
-     d3.select("svg").append("g")
+margin = 150;
+
+d3.select("svg").append("g")
                   .attr("transform","translate("+margin+","+margin+")")
-            .selectAll().data(data).enter()
-            .append('rect')
-            .attr('x', (d,i) => x(i))
-            .attr('y', (d) => y(d))
-            .attr("width", x.bandwidth())
-            .attr("height", (d) => y(0) - y(d));
-
-d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y));
-d3.select("svg").append("g").attr("transform", "translate("+margin+","+(height+margin)+")").call(d3.axisBottom(x));
-      
-      
- 
-
- 
-
-
-</script>
+    .selectAll("path")
+    .data(pie(data))
+    .enter()
+    .append("path")
+        .attr("d",arc)
+        .attr("fill",function(d,i) { return color[i]; });
+  </script>
+  </body>
+</html>
