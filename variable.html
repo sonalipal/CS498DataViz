@@ -32,7 +32,7 @@ var svg = d3.select("#my_dataviz")
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_country_trend.csv", function(data) {
 
     // List of groups (here I have one group per column)
-    var allGroup = ["valueA", "valueB"]
+    var allGroup = ["Movies", "TV-Shows"]
 
     // add the options to the button
     d3.select("#selectButton")
@@ -58,7 +58,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_coun
     
     // Add X axis --> it is a date format
     var x =  d3.scaleLinear()   //d3.scaleTime()
-       .domain(d3.extent(data, function(d) { return +d.time; }))
+       .domain(d3.extent(data, function(d) { return +d.Year; }))
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -67,7 +67,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_coun
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [0,20])
+       .domain([0, d3.max(data, function(d) { return +d.Movies; })])       //.domain( [0,20])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
@@ -78,10 +78,10 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_coun
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(function(d) { return x(+d.time) })
-          .y(function(d) { return y(+d.valueA) })
+          .x(function(d) { return x(+d.Year) })
+          .y(function(d) { return y(+d.Movies) })
         )
-        .attr("stroke", function(d){ return myColor("valueA") })
+        .attr("stroke", function(d){ return myColor("Movies") })
         .style("stroke-width", 4)
         .style("fill", "none")
 
