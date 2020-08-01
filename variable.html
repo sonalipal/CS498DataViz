@@ -13,14 +13,34 @@
 <script>
 
 // Initialize a circle
-var myCircle = d3.select("#dataviz_buttonTriger")
-  .append("svg")
-  .append("rect")
-    .attr("x", 30)
-    .attr("y", 70)
-    .attr("width", 2)
-    .attr("height", 70)
-    .attr("stroke", "black")
+//var myCircle = d3.select("#dataviz_buttonTriger")
+  //.append("svg")
+  //.append("rect")
+    //.attr("x", 30)
+    //.attr("y", 70)
+    //.attr("width", 2)
+    //.attr("height", 70)
+    //.attr("stroke", "black")
+
+data = [10 , 20, 30, 40]
+var width = 100;
+var height = 100;
+var margin = 50;
+var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,width]);
+var y = d3.scaleLinear().domain([0,42]).range([height,0]);
+
+
+var myCircle = d3.select("svg").append("g")
+                  .attr("transform","translate("+margin+","+margin+")")
+            .selectAll().data(data).enter()
+            .append('rect')
+            .attr('x', (d,i) => x(i))
+            .attr('y', (d) => y(d))
+            .attr("width", x.bandwidth())
+            .attr("height", (d) => y(d));
+
+d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")").call(d3.axisLeft(y));
+d3.select("svg").append("g").attr("transform", "translate("+margin+","+(height+margin)+")").call(d3.axisBottom(x));
 
 // A function that update the color circle
 var changeColor = function(color){
