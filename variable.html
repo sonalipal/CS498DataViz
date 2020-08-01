@@ -5,10 +5,61 @@
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Add 2 buttons -->
-<button onclick="update('var1')">Variable 1</button>
-<button onclick="update('var2')">Variable 2</button>
+<button onclick="init1()">Variable 1</button>
+<button onclick="init2()">Variable 2</button>
 
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<sctipt>
+  async function init1() {
 
+	const data = await d3.csv("https://flunky.github.io/cars2017.csv");
+    margin = 50;
+    var xlogScale = d3.scaleLog().base(10).domain([10, 150]).range([0,200]);
+    var ylogScale = d3.scaleLog().base(10).domain([10, 150]).range([200,0]);
+    d3.select("svg").append("g")
+                      .attr("transform","translate("+margin+","+margin+")")
+                     .selectAll("circle")
+                     .data(data)
+                     .enter()
+                     .append("circle")
+                     .attr('cx', function(d,i){ return xlogScale(d.AverageCityMPG);} )
+                     .attr('cy', function(d,i){ return ylogScale(d.AverageHighwayMPG);} )
+                     .attr("r",function(d,i)  {return +d.EngineCylinders + 2;});
 
+d3.select("svg").append("g")
+      .attr("transform", "translate("+margin+","+margin+")")
+      .call(d3.axisLeft(ylogScale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));  
 
+d3.select("svg").append("g")
+      .attr("transform", "translate("+margin+","+(200+margin)+")")
+      .call(d3.axisBottom(xlogScale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
+
+      }
+async function init2() {
+
+	const data = await d3.csv("https://flunky.github.io/cars2017.csv");
+    margin = 50;
+    var xlogScale = d3.scaleLog().base(10).domain([10, 150]).range([0,200]);
+    var ylogScale = d3.scaleLog().base(10).domain([10, 150]).range([200,0]);
+    d3.select("svg").append("g")
+                      .attr("transform","translate("+margin+","+margin+")")
+                     .selectAll("circle")
+                     .data(data)
+                     .enter()
+                     .append("circle")
+                     .attr('cx', function(d,i){ return xlogScale(d.AverageCityMPG);} )
+                     .attr('cy', function(d,i){ return ylogScale(d.AverageHighwayMPG);} )
+                     .attr("r",function(d,i)  {return +d.EngineCylinders + 2;});
+
+d3.select("svg").append("g")
+      .attr("transform", "translate("+margin+","+margin+")")
+      .call(d3.axisLeft(ylogScale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));  
+
+d3.select("svg").append("g")
+      .attr("transform", "translate("+margin+","+(200+margin)+")")
+      .call(d3.axisBottom(xlogScale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
+
+      }
+init1()
 </script>
