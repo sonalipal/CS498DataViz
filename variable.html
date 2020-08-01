@@ -24,6 +24,11 @@ var data2 = [
    {group: "C", value: 20},
    {group: "D", value: 10}
 ];
+   
+   // set the dimensions and margins of the graph
+    var margin = {top: 50, right: 30, bottom: 80, left: 200},
+    width =  600 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 // A function that create / update the plot for a given variable:
 function update1() {
