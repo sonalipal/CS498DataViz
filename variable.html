@@ -15,10 +15,11 @@
 // Initialize a circle
 var myCircle = d3.select("#dataviz_buttonTriger")
   .append("svg")
-  .append("circle")
-    .attr("cx", 300)
-    .attr("cy", 700)
-    .attr("r", 500)
+  .append("rect")
+    .attr("x", 30)
+    .attr("y", 70)
+    .attr("width", 2)
+    .attr("height", 70)
     .attr("stroke", "black")
 
 // A function that update the color circle
