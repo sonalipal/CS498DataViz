@@ -8,42 +8,7 @@
 <button onclick="update('var1')">Variable 1</button>
 <button onclick="update('var2')">Variable 2</button>
 
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
-function update(selectedVar) {
 
-  // Parse the Data
-  d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/barplot_change_data.csv", function(data) {
 
-    // X axis
-    x.domain(data.map(function(d) { return d.group; }))
-    xAxis.transition().duration(1000).call(d3.axisBottom(x))
-
-    // Add Y axis
-    y.domain([0, d3.max(data, function(d) { return +d[selectedVar] }) ]);
-    yAxis.transition().duration(1000).call(d3.axisLeft(y));
-
-    // variable u: map data to existing bars
-    var u = svg.selectAll("rect")
-      .data(data)
-
-    // update bars
-    u
-      .enter()
-      .append("rect")
-      .merge(u)
-      .transition()
-      .duration(1000)
-        .attr("x", function(d) { return x(d.group); })
-        .attr("y", function(d) { return y(d[selectedVar]); })
-        .attr("width", x.bandwidth())
-        .attr("height", function(d) { return height - y(d[selectedVar]); })
-        .attr("fill", "#69b3a2")
-  })
-
-}
-
-// Initialize plot
-update('var1')
 
 </script>
