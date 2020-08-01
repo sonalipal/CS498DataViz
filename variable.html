@@ -11,8 +11,7 @@
 <div id="my_dataviz"></div>
 
 <script>
-   function update1()
-   {
+  
     console.log("I am in update1");
       var width = 200;
       var height = 200;
@@ -34,14 +33,9 @@ d3.select("svg").append("g").attr("transform", "translate("+margin+","+margin+")
 d3.select("svg").append("g").attr("transform", "translate("+margin+","+(height+margin)+")").call(d3.axisBottom(x));
       
       
-   }
+ 
 
-    function update2()
-   {
-    console.log("I am in update2");
-      
-   }
-// Initialize the plot with the first dataset
-update1()
+ 
+
 
 </script>
