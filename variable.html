@@ -49,12 +49,21 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_coun
       .range(d3.schemeSet2);
 
     // Add X axis --> it is a date format
-    var x = d3.scaleLinear()
-      .domain([2009,2020])
+    //var x = d3.scaleLinear()
+      //.domain([2009,2020])
+      //.range([ 0, width ]);
+    //svg.append("g")
+      //.attr("transform", "translate(0," + height + ")")
+      //.call(d3.axisBottom(x));
+    
+    // Add X axis --> it is a date format
+    var x =  d3.scaleLinear()   //d3.scaleTime()
+       .domain(d3.extent(data, function(d) { return +d.time; }))
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
+
 
     // Add Y axis
     var y = d3.scaleLinear()
