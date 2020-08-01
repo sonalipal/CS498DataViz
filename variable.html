@@ -4,12 +4,13 @@
   
 <body>
 <!-- Add 2 buttons -->
-<button onclick="update('var1')">Variable 1</button>
-<button onclick="update('var2')">Variable 2</button>
+<button onclick="update()">Variable 1</button>
+<button onclick="update()">Variable 2</button>
 <svg width=300 height=300>
 </svg>
 
 <script>
+function update() {
 var data = [4265,1960];
 var color = ['orange','movies'];
 var pie = d3.pie();
@@ -25,6 +26,7 @@ d3.select("svg").append("g")
     .append("path")
         .attr("d",arc)
         .attr("fill",function(d,i) { return color[i]; });
+}
   </script>
   </body>
 </html>
