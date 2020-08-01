@@ -50,7 +50,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_coun
 
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
-      .domain([0,10])
+      .domain([2009,2020])
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
